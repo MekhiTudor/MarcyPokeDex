@@ -1,4 +1,4 @@
-const fetchAllPokemon = async () => {
+export const fetchAllPokemon = async () => {
   try {
     const response = await fetch(
       `https://pokeapi.co/api/v2/pokemon/?limit=1302`
@@ -40,31 +40,32 @@ const fetchDataPokemon = async (e) => {
   console.log(pokeData);
   return pokeData;
 };
-console.log(fetchDataPokemon());
 
-// user can submit the form
-const searchPokemon = (event) => {
-  event.preventDefault();
-  const pokemonName = document.getElementById('pokemon-search').value.trim();
-  if (pokemonName) {
-      updatePokemonDetails(pokemonName);
-  }
-};
 
-// Make getting pokemon user accessible
-const fetchOnePokemon = async (pokemon) => {
-  try {
-      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.toLowerCase()}`);
-      if (!response.ok) {
-          throw new Error('Pokemon not found');
-      }
-      const data = await response.json();
-      return data;
-  } catch (error) {
-      console.error('Are you sure that\'s what you\'re looking for?:', error);
-      return null;
-  }
-};
+
+// // user can submit the form
+// const searchPokemon = (event) => {
+//   event.preventDefault();
+//   const pokemonName = document.getElementById('pokemon-search').value.trim();
+//   if (pokemonName) {
+//       updatePokemonDetails(pokemonName);
+//   }
+// };
+
+// // Make getting pokemon user accessible
+// const fetchOnePokemon = async (pokemon) => {
+//   try {
+//       const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.toLowerCase()}`);
+//       if (!response.ok) {
+//           throw new Error('Pokemon not found');
+//       }
+//       const data = await response.json();
+//       return data;
+//   } catch (error) {
+//       console.error('Are you sure that\'s what you\'re looking for?:', error);
+//       return null;
+//   }
+// };
 
 // take info from api and give to user
 // const updatePokemonDetails = async (pokemonName) => {
@@ -94,3 +95,6 @@ const fetchOnePokemon = async (pokemon) => {
 //         });
 //       }
 //   };
+
+//console.log(fetchDataPokemon());
+
