@@ -1,4 +1,4 @@
-const fetchAllPokemon = async () => {
+export const fetchAllPokemon = async () => {
   try {
     const response = await fetch(
       `https://pokeapi.co/api/v2/pokemon/?limit=1302`
@@ -40,4 +40,4 @@ const fetchDataPokemon = async (e) => {
   console.log(pokeData);
   return pokeData;
 };
-console.log(fetchDataPokemon());
+//console.log(fetchDataPokemon());
