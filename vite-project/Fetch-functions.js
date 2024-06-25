@@ -40,4 +40,61 @@ const fetchDataPokemon = async (e) => {
   console.log(pokeData);
   return pokeData;
 };
+
+
+
+// // user can submit the form
+// const searchPokemon = (event) => {
+//   event.preventDefault();
+//   const pokemonName = document.getElementById('pokemon-search').value.trim();
+//   if (pokemonName) {
+//       updatePokemonDetails(pokemonName);
+//   }
+// };
+
+// // Make getting pokemon user accessible
+// const fetchOnePokemon = async (pokemon) => {
+//   try {
+//       const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.toLowerCase()}`);
+//       if (!response.ok) {
+//           throw new Error('Pokemon not found');
+//       }
+//       const data = await response.json();
+//       return data;
+//   } catch (error) {
+//       console.error('Are you sure that\'s what you\'re looking for?:', error);
+//       return null;
+//   }
+// };
+
+// take info from api and give to user
+// const updatePokemonDetails = async (pokemonName) => {
+//   const data = await fetchOnePokemon(pokemonName);
+//   if (data) {
+//       // pokemon name, hp, id, height, weight, attack
+//       document.getElementById('pokemon-name').textContent = data.name.charAt(0).toUpperCase() + data.name.slice(1);
+//       document.getElementById('pokemon-hp').textContent = `HP: ${data.stats[0].base_stat}`;
+//       document.getElementById('pokemon-id').textContent = `ID: ${data.id}`;
+//       document.getElementById('pokemon-height').textContent = `Height: ${data.height}`;
+//       document.getElementById('pokemon-weight').textContent = `Weight: ${data.weight}`;
+//       document.getElementById('pokemon-attack').textContent = `Attack: ${data.stats[1].base_stat}`;
+
+//       // pokemon type
+//       const types = data.types.map(type => type.type.name).join(', ');
+//       document.getElementById('pokemon-type').textContent = `Type: ${types}`;
+
+//       // pokemon image
+//       document.getElementById('pokemon-image').src = data.sprites.front_default;
+//       document.getElementById('pokemon-image').alt = data.name;
+
+//       // pokemon moves
+//       const movesList = document.getElementById('pokemon-moves');
+//       movesList.innerHTML = '';
+//       data.moves.slice(0, 5).forEach(move => {
+//           movesList.innerHTML += `<li>${move.move.name}</li>`;
+//         });
+//       }
+//   };
+
 //console.log(fetchDataPokemon());
+
