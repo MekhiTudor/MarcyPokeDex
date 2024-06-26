@@ -1,3 +1,44 @@
 .myPokemon {
   list-style: none;
 }
+
+
+/* Tai messing about */
+/* 
+color Yellow: 	#ffcb05
+color Blue:     #2a75bb
+*/
+body{
+  background-color: #2a75bb;
+}
+
+h1 {
+  text-align: center;
+  width: 100%;
+  background-color: #ffcb05;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pokemon-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.left-section {
+  width: 65%;
+  background-color: aliceblue;
+}
+
+.right-section {
+  width: 30%;
+  background-color: aliceblue;
+}
+
+.pokemon-list {
+  list-style-type: none;
+  padding: 0;
+}
