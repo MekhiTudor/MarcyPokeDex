@@ -1,17 +1,46 @@
 import { fetchAllPokemon, fetchDataPokemon } from "./Fetch-functions";
 
-const renderPokemon = async (pokemon) => {
+export const fetchAllPokemon = async (pokemon = "?limit=5") => {
+  try {
+    const response = await fetch(
+      `https://pokeapi.co/api/v2/pokemon/${pokemon}`
+    );
+    if (!response.ok) {
+      throw new Error("You didn't catch 'em all");
+    }
+    const jsonData = await response.json();
+    //if (!jsonData.results) return jsonData;
+    return jsonData.results;
+  } catch (error) {
+    console.warn(error);
+    return null;
+  }
+};
+
+
+
+
+export const renderPokemon = async (pokemon) => {
   //make sure you clear the pokemon every time
-  //document.querySelector("#pokemon-list").innerHTML = ``;
+  document.querySelector("#pokemon-list").innerHTML = ``;
   //takes an array of objects = results
-  for (let i = 0; i < 350; i++) {
+  //console.log(typeof pokemon);
+
+  // const pokeData = { id, weight, namePoke, height, stats, type, ability };
+  //create an element for each thing
+  //append elements to cards
+  if (!pokemon) return;
+  for (let i = 0; i < pokemon.length; i++) {
+    console.log(i);
     //console.log(pokemon[i]);
-    const url = pokemon[i].url;
+    const url = pokemon[i].url ? pokemon[i].url : pokemon[i].name;
+
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error(`No Pokemon exist brother`);
     }
     const parsedPoke = await response.json();
+    // console.log('RUAHH', pokemon, parsedPoke)
 
     const idNum = document.createElement("p");
     const li = document.createElement("li");
@@ -25,20 +54,22 @@ const renderPokemon = async (pokemon) => {
     //const section = document.createElement("section");
     document.querySelector("#pokemon-list").append(idNum, li);
   }
+
   // const pokeData = { id, weight, namePoke, height, stats, type, ability };
   //create an element for each thing
   //append elements to cards
 };
 
 const myPoke = await fetchAllPokemon();
-
-renderPokemon(myPoke);
+//console.log("TESTINGDJGBD", myPoke);
+await renderPokemon(myPoke);
 //grabIdNum(myPoke);
+
+
 
 const renderCard = async (e) => {
   if (e.target.matches("li")) {
     const pokemonName = e.target.textContent;
-
     try {
       // Fetch data for the selected Pokémon
       const pokeData = await fetchDataPokemon(pokemonName);
@@ -78,7 +109,7 @@ const renderCard = async (e) => {
   }
 };
 
-const list = document.getElementById("pokemon-list");
-console.log(list);
 
-list.addEventListener("click", renderCard);
+const list = document.getElementById("pokemon-list");
+
+ list.addEventListener("click", renderCard);
