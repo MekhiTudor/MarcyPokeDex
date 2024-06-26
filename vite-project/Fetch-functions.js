@@ -1,7 +1,7 @@
-export const fetchAllPokemon = async () => {
+export const fetchAllPokemon = async (pokemon = "?limit=350") => {
   try {
     const response = await fetch(
-      `https://pokeapi.co/api/v2/pokemon/?limit=1302`
+      `https://pokeapi.co/api/v2/pokemon/${pokemon}`
     );
     if (!response.ok) {
       throw new Error("You didn't catch 'em all");
@@ -40,8 +40,6 @@ const fetchDataPokemon = async (e) => {
   console.log(pokeData);
   return pokeData;
 };
-
-
 
 // // user can submit the form
 // const searchPokemon = (event) => {
@@ -97,4 +95,3 @@ const fetchDataPokemon = async (e) => {
 //   };
 
 //console.log(fetchDataPokemon());
-

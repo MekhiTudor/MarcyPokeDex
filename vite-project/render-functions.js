@@ -4,7 +4,7 @@ const renderPokemon = async (pokemon) => {
   //make sure you clear the pokemon every time
   //document.querySelector("#pokemon-list").innerHTML = ``;
   //takes an array of objects = results
-  for (let i = 0; i < 350; i++) {
+  for (let i = 0; i < pokemon.length; i++) {
     //console.log(pokemon[i]);
     const url = pokemon[i].url;
     const response = await fetch(url);
