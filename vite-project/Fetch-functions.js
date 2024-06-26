@@ -1,7 +1,6 @@
-
 import { renderPokemon } from "./render-functions";
 
-export const fetchAllPokemon = async (pokemon = "?limit=5") => {
+export const fetchAllPokemon = async (pokemon = "?limit=25") => {
   try {
     const response = await fetch(
       `https://pokeapi.co/api/v2/pokemon/${pokemon}`
@@ -14,8 +13,7 @@ export const fetchAllPokemon = async (pokemon = "?limit=5") => {
     return jsonData.results;
   } catch (error) {
     console.warn(error);
-      return null;
-
+    return null;
   }
 };
 
@@ -23,10 +21,11 @@ export const fetchAllPokemon = async (pokemon = "?limit=5") => {
 //fetch the specific one
 //grab all the information into an object
 
-
 export const fetchDataPokemon = async (pokemonName) => {
   try {
-    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
+    const response = await fetch(
+      `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
+    );
     if (!response.ok) {
       throw new Error("Pokemon not found");
     }
@@ -37,39 +36,41 @@ export const fetchDataPokemon = async (pokemonName) => {
     const namePoke = pokeJson.name;
     const height = pokeJson.height;
     const stats = pokeJson.stats;
-    const type = pokeJson.types[0].type; 
+    const type = pokeJson.types[0].type;
     const ability = pokeJson.abilities; // issue
     const image = pokeJson.sprites.front_default;
-    const moves = pokeJson.moves.map(move => move.move);
+    const moves = pokeJson.moves.map((move) => move.move);
 
-    const pokeData = { id, weight, namePoke, height, stats, type, ability, image, moves};
+    const pokeData = {
+      id,
+      weight,
+      namePoke,
+      height,
+      stats,
+      type,
+      ability,
+      image,
+      moves,
+    };
     console.log(pokeData);
     return pokeData;
   } catch (error) {
     console.error("Error fetching Pokémon data:", error);
-    return null; 
+    return null;
   }
 };
 
-
-
-
-
-
-
 // // user can submit the form
-const searchPokemon = async (e) => {
+export const searchPokemon = async (e) => {
   e.preventDefault();
   document.querySelector("#pokemon-list").innerHTML = ``;
   const value = document.querySelector("#pokemon-search").value;
 
   const pokemonData = await fetchAllPokemon(value);
-  
+
   const pokeArr = [pokemonData];
-renderPokemon(pokeArr)
-
-
+  console.log(pokeArr);
+  await renderPokemon(pokeArr);
 };
 
 document.getElementById("poke-form").addEventListener("submit", searchPokemon);
-
