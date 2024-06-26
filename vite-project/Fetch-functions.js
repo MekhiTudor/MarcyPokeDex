@@ -1,3 +1,4 @@
+
 export const fetchAllPokemon = async () => {
   try {
     const response = await fetch(
@@ -11,7 +12,7 @@ export const fetchAllPokemon = async () => {
     return jsonData.results;
   } catch (error) {
     console.warn(error);
-    null;
+      return null;
   }
 };
 
@@ -19,10 +20,39 @@ export const fetchAllPokemon = async () => {
 //fetch the specific one
 //grab all the information into an object
 
-const fetchDataPokemon = async (e) => {
-  // const pokeName = e.target;
-  //const response = fetch(`https://pokeapi.co/api/v2/pokemon/${pokeName}`)
-  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/pikachu`);
+export const fetchDataPokemon = async (pokemonName) => {
+  try {
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
+    if (!response.ok) {
+      throw new Error("Pokemon not found");
+    }
+    const pokeJson = await response.json();
+
+    const id = pokeJson.id;
+    const weight = pokeJson.weight;
+    const namePoke = pokeJson.name;
+    const height = pokeJson.height;
+    const stats = pokeJson.stats;
+    const type = pokeJson.types[0].type; 
+    const ability = pokeJson.abilities; // issue
+    const image = pokeJson.sprites.front_default;
+    const moves = pokeJson.moves.map(move => move.move);
+
+    const pokeData = { id, weight, namePoke, height, stats, type, ability, image, moves};
+    console.log(pokeData);
+    return pokeData;
+  } catch (error) {
+    console.error("Error fetching Pokémon data:", error);
+    return null; 
+  }
+};
+
+
+/*
+export const fetchDataPokemon = async (e) => {
+  const pokeName = e.target;
+  const response =  fetch(`https://pokeapi.co/api/v2/pokemon/${pokeName}`)
+  //const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${e}`);
   if (!response.ok) {
     throw new Error("can't find pokemon - try again later");
   }
@@ -40,7 +70,7 @@ const fetchDataPokemon = async (e) => {
   console.log(pokeData);
   return pokeData;
 };
-
+*/
 
 
 // // user can submit the form
@@ -96,5 +126,5 @@ const fetchDataPokemon = async (e) => {
 //       }
 //   };
 
-//console.log(fetchDataPokemon());
+// console.log(fetchDataPokemon());
 
