@@ -1,8 +1,23 @@
-import { fetchAllPokemon } from "./Fetch-functions";
+export const fetchAllPokemon = async (pokemon = "?limit=5") => {
+  try {
+    const response = await fetch(
+      `https://pokeapi.co/api/v2/pokemon/${pokemon}`
+    );
+    if (!response.ok) {
+      throw new Error("You didn't catch 'em all");
+    }
+    const jsonData = await response.json();
+    //if (!jsonData.results) return jsonData;
+    return jsonData.results;
+  } catch (error) {
+    console.warn(error);
+    return null;
+  }
+};
 
 export const renderPokemon = async (pokemon) => {
   //make sure you clear the pokemon every time
-  //document.querySelector("#pokemon-list").innerHTML = ``;
+  document.querySelector("#pokemon-list").innerHTML = ``;
   //takes an array of objects = results
   //console.log(typeof pokemon);
 
@@ -11,6 +26,7 @@ export const renderPokemon = async (pokemon) => {
   //append elements to cards
   if (!pokemon) return;
   for (let i = 0; i < pokemon.length; i++) {
+    console.log(i);
     //console.log(pokemon[i]);
     const url = pokemon[i].url;
 
@@ -19,6 +35,7 @@ export const renderPokemon = async (pokemon) => {
       throw new Error(`No Pokemon exist brother`);
     }
     const parsedPoke = await response.json();
+    // console.log('RUAHH', pokemon, parsedPoke)
 
     const idNum = document.createElement("p");
     const li = document.createElement("li");
@@ -39,8 +56,8 @@ export const renderPokemon = async (pokemon) => {
 };
 
 const myPoke = await fetchAllPokemon();
-console.log(myPoke);
-renderPokemon(myPoke);
+console.log('TESTINGDJGBD', myPoke)
+await renderPokemon(myPoke);
 //grabIdNum(myPoke);
 
 // const renderCard = (e) => {
