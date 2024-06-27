@@ -1,4 +1,4 @@
-import { fetchAllPokemon, fetchDataPokemon } from "./Fetch-functions";
+import { fetchAllPokemon, fetchDataPokemon } from "./Fetch-functions.js";
 
 export const renderPokemon = async (pokemon) => {
   //make sure you clear the pokemon every time

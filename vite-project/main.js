@@ -1,9 +1,13 @@
-import { renderPokemon, renderCard, renderFirstCard } from "./render-functions";
+import {
+  renderPokemon,
+  renderCard,
+  renderFirstCard,
+} from "./render-functions.js";
 import {
   fetchAllPokemon,
   fetchDataPokemon,
   searchPokemon,
-} from "./Fetch-functions";
+} from "./Fetch-functions.js";
 
 const main = async () => {
   renderFirstCard("mewtwo");

@@ -1,6 +1,6 @@
-import { renderPokemon } from "./render-functions";
+import { renderPokemon } from "./render-functions.js";
 
-export const fetchAllPokemon = async (pokemon = "?limit=1302") => {
+const fetchAllPokemon = async (pokemon = "?limit=1302") => {
   try {
     const response = await fetch(
       `https://pokeapi.co/api/v2/pokemon/${pokemon}`
@@ -21,7 +21,7 @@ export const fetchAllPokemon = async (pokemon = "?limit=1302") => {
 //fetch the specific one
 //grab all the information into an object
 
-export const fetchDataPokemon = async (pokemonName) => {
+const fetchDataPokemon = async (pokemonName) => {
   try {
     const response = await fetch(
       `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
@@ -61,7 +61,7 @@ export const fetchDataPokemon = async (pokemonName) => {
 };
 
 // // user can submit the form
-export const searchPokemon = async (e) => {
+const searchPokemon = async (e) => {
   e.preventDefault();
   document.querySelector("#pokemon-list").innerHTML = ``;
   const value = document.querySelector("#pokemon-search").value;
@@ -74,3 +74,5 @@ export const searchPokemon = async (e) => {
 };
 
 document.getElementById("poke-form").addEventListener("submit", searchPokemon);
+
+export { searchPokemon, fetchDataPokemon, fetchAllPokemon };
