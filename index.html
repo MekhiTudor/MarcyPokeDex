@@ -3,16 +3,21 @@
 <head>
 
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Marcy's Pokedex</title>
-  <script type="module" crossorigin src="/MarcyPokeDex/assets/index-Bi9Xh70y.js"></script>
-  <link rel="stylesheet" crossorigin href="/MarcyPokeDex/assets/index-CJb7OOlR.css">
+  <title>Marcy's Pokédex</title>
+  <script type="module" crossorigin src="/MarcyPokeDex/assets/index-CrGZasRb.js"></script>
+  <link rel="stylesheet" crossorigin href="/MarcyPokeDex/assets/index-D7x86W9P.css">
 </head>
 
 <body>
   <!-- header -->
   <header>
-    <h1>Marcy's Pokedex</h1>
+    <div class="banner" id="light-red-banner"></div>
+    <div class="banner" id="medium-red-banner"></div>
+    <div class="banner" id="dark-red-banner"></div>
+    <div class="banner-content is-overlay"> <h1>Marcy's Pokédex</h1></div>
+   
   </header>
   
   <!-- left side of pokedex -->
@@ -52,15 +57,22 @@
         <h2>All Pokemon</h2>
         <ul class="pokemon-list" id="pokemon-list">
             <!-- Pokemon names will be dynamically added here -->
+             
         </ul>
     </aside>
 </main>
 
+    
 <footer>
-    <form class="search-form" id="poke-form">
-        <input type="text" id="pokemon-search" class="search-input" placeholder="Enter Pokemon name">
-        <button type="submit" class="search-btn">Search</button>
+  <form class="search-form"  id="poke-form">
+    <label for="pokemon-search">Search Pokemon</label>
+    <input class="input" type="text" id="pokemon-search" placeholder="Search Pokémon" />
+    <button type="submit"  class="button" id="form-button" >Search</button>
     </form>
+    <!-- <form class="search-form"  id="poke-form">
+        <input type="text" id="pokemon-search" class="search-input" placeholder="Enter Pokemon name"/>
+        <button type="submit"  class="button is-danger" >Search</button>
+    </form> -->
 </footer>
 
 </main>
