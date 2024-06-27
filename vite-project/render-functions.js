@@ -1,6 +1,6 @@
-import { fetchAllPokemon, fetchDataPokemon } from "./Fetch-functions.js";
+import { fetchAllPokemon, fetchDataPokemon } from "./fetch-functions.js";
 
-export const renderPokemon = async (pokemon) => {
+const renderPokemon = async (pokemon) => {
   //make sure you clear the pokemon every time
   document.querySelector("#pokemon-list").innerHTML = ``;
   //takes an array of objects = results
@@ -48,7 +48,7 @@ export const renderPokemon = async (pokemon) => {
 // await renderPokemon(myPoke);
 // //grabIdNum(myPoke);
 
-export const renderCard = async (e) => {
+const renderCard = async (e) => {
   if (e.target.matches("li")) {
     const pokemonName = e.target.textContent;
     try {
@@ -89,7 +89,7 @@ export const renderCard = async (e) => {
   }
 };
 
-export const renderFirstCard = async (pokemonName) => {
+const renderFirstCard = async (pokemonName) => {
   try {
     // Fetch data for the selected Pokémon
     const pokeData = await fetchDataPokemon(pokemonName);
@@ -126,3 +126,6 @@ export const renderFirstCard = async (pokemonName) => {
     console.error("Error rendering Pokémon card:", error);
   }
 };
+
+
+export {renderPokemon, renderCard, renderFirstCard};

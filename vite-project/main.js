@@ -7,7 +7,7 @@ import {
   fetchAllPokemon,
   fetchDataPokemon,
   searchPokemon,
-} from "./Fetch-functions.js";
+} from "./fetch-functions.js";
 
 const main = async () => {
   renderFirstCard("mewtwo");
