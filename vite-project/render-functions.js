@@ -29,6 +29,7 @@ export const renderPokemon = async (pokemon) => {
     li.textContent = pokemon[i].name;
     li.id = `${pokemon[i].name}`;
     li.classList = `myPokemon`;
+    idNum.classList = `idNumbers`;
     idNum.textContent = parsedPoke.id;
     //console.log(parsedPoke.id);
     if (parsedPoke.id < 100) idNum.textContent = `0${parsedPoke.id}`;
@@ -85,5 +86,43 @@ export const renderCard = async (e) => {
     } catch (error) {
       console.error("Error rendering Pokémon card:", error);
     }
+  }
+};
+
+export const renderFirstCard = async (pokemonName) => {
+  try {
+    // Fetch data for the selected Pokémon
+    const pokeData = await fetchDataPokemon(pokemonName);
+
+    console.log(pokeData);
+
+    // Update DOM elements in the left section with fetched data
+    const pokemonNameElement = document.getElementById("pokemon-name");
+    const pokemonIdElement = document.getElementById("pokemon-id");
+    const pokemonHeightElement = document.getElementById("pokemon-height");
+    const pokemonWeightElement = document.getElementById("pokemon-weight");
+    const pokemonTypeElement = document.getElementById("pokemon-type");
+    const pokemonStatsElement = document.getElementById("pokemon-hp");
+    const pokemonAttackElement = document.getElementById("pokemon-attack");
+    const pokemonImageElement = document.getElementById("pokemon-image");
+    const movesList = document.getElementById("pokemon-moves");
+
+    //DOM changes are made
+    pokemonNameElement.textContent = pokeData.namePoke;
+    pokemonIdElement.textContent = `ID: ${pokeData.id}`;
+    pokemonHeightElement.textContent = `Height: ${pokeData.height}`;
+    pokemonWeightElement.textContent = `Weight: ${pokeData.weight}`;
+    pokemonTypeElement.textContent = `Type: ${pokeData.type.name}`;
+    pokemonStatsElement.textContent = `HP: ${pokeData.stats[0].base_stat}`;
+    pokemonAttackElement.textContent = `ATK: ${pokeData.stats[1].base_stat}`;
+    pokemonImageElement.src = pokeData.image;
+
+    // moves
+    movesList.innerHTML = "";
+    pokeData.moves.slice(0, 5).forEach((move) => {
+      movesList.innerHTML += `<li>${move.name}</li>`;
+    });
+  } catch (error) {
+    console.error("Error rendering Pokémon card:", error);
   }
 };

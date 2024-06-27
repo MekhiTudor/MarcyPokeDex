@@ -1,21 +1,57 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css";
+@import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap");
+* {
+  font-family: "Pixelify Sans";
+}
 .myPokemon {
   list-style: none;
+  width: 121.15px;
+  text-transform: capitalize;
 }
-
 
 /* Tai messing about */
 /* 
 color Yellow: 	#ffcb05
 color Blue:     #2a75bb
 */
-body{
-  background-color: #2a75bb;
+body {
+  background-color: white;
+}
+header {
+  border: black 5px solid;
+}
+h1 {
+  display: flex;
+
+  justify-content: center;
+  width: 100%;
+  color: white;
+  font-size: 45px;
+}
+.pokemon-list {
+  display: grid;
+  grid-template-columns: 100px 100px;
+}
+#pokemon-moves {
+  padding-left: 5px;
+  display: grid;
+  grid-template-columns: 125px 125px 125px 125px 125px;
+}
+.idNumbers {
+  width: 121.15px;
 }
 
-h1 {
-  text-align: center;
-  width: 100%;
-  background-color: #ffcb05;
+#light-red-banner {
+  height: 35px;
+  background-color: rgba(232, 48, 48, 255);
+}
+#medium-red-banner {
+  height: 10px;
+  background-color: rgba(192, 32, 42, 255);
+}
+#dark-red-banner {
+  height: 20px;
+  background-color: rgba(143, 17, 31, 255);
 }
 
 .container {
@@ -27,18 +63,37 @@ h1 {
   max-width: 100%;
   height: auto;
 }
-
+.left-section,
+.right-section {
+  margin-top: 10px;
+}
 .left-section {
+  min-width: fit-content;
   width: 65%;
   background-color: aliceblue;
+  border: black 5px solid;
 }
 
 .right-section {
-  width: 30%;
+  border: black 5px solid;
+  width: 25%;
+  max-height: 65vh;
   background-color: aliceblue;
+  overflow-y: scroll;
+  overscroll-behavior-inline: contain;
 }
-
+h2 {
+  font-size: 30px;
+  font-weight: 700;
+}
 .pokemon-list {
   list-style-type: none;
-  padding: 0;
+  padding-left: 10px;
+}
+.pokemon-info {
+  padding-left: 10px;
+}
+
+#pokemon-name {
+  text-transform: capitalize;
 }
