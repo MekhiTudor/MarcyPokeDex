@@ -1,6 +1,6 @@
 import { renderPokemon } from "./render-functions";
 
-export const fetchAllPokemon = async (pokemon = "?limit=1305") => {
+export const fetchAllPokemon = async (pokemon = "?limit=1302") => {
   try {
     const response = await fetch(
       `https://pokeapi.co/api/v2/pokemon/${pokemon}`

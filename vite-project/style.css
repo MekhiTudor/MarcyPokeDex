@@ -1,12 +1,19 @@
 @import "https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css";
-@import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Playwrite+NZ:wght@200&display=swap");
 * {
   font-family: "Pixelify Sans";
+  text-shadow: 1px 1px 2px black;
 }
 .myPokemon {
   list-style: none;
   width: 121.15px;
   text-transform: capitalize;
+}
+.myPokemon:hover {
+  cursor: pointer;
+  background-color: rgba(232, 48, 48, 255);
+  color: white;
 }
 
 /* Tai messing about */
@@ -30,6 +37,8 @@ h1 {
 }
 .pokemon-list {
   display: grid;
+
+  font-size: 20px;
   grid-template-columns: 100px 100px;
 }
 #pokemon-moves {
@@ -63,14 +72,11 @@ h1 {
   max-width: 100%;
   height: auto;
 }
-.left-section,
-.right-section {
-  margin-top: 10px;
-}
+
 .left-section {
   min-width: fit-content;
   width: 65%;
-  background-color: aliceblue;
+
   border: black 5px solid;
 }
 
@@ -78,7 +84,7 @@ h1 {
   border: black 5px solid;
   width: 25%;
   max-height: 65vh;
-  background-color: aliceblue;
+
   overflow-y: scroll;
   overscroll-behavior-inline: contain;
 }
@@ -96,4 +102,46 @@ h2 {
 
 #pokemon-name {
   text-transform: capitalize;
+}
+
+.left-section,
+.right-section {
+  color: rgba(85, 87, 86, 255);
+  background-color: rgba(248, 248, 248, 255);
+  margin-top: 10px;
+}
+
+#pokemon-name {
+  background-color: rgba(232, 48, 48, 255);
+  padding-left: 10px;
+  padding-right: 10px;
+  width: fit-content;
+  color: rgba(248, 248, 248, 255);
+  margin-top: 20px;
+  border-radius: 5px;
+  border: rgba(248, 153, 157, 255) solid 2px;
+}
+
+#pokemon-moves {
+  text-transform: capitalize;
+}
+#pokemon-type {
+  text-transform: capitalize;
+}
+.search-form {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+#form-button {
+  display: flex;
+  margin-top: 10px;
+  background-color: rgba(232, 48, 48, 255);
+  color: white;
+}
+#form-button:hover {
+  display: flex;
+  margin-top: 10px;
+  background-color: white;
+  color: black;
 }
