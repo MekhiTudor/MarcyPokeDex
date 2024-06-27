@@ -1,6 +1,6 @@
 import { renderPokemon } from "./render-functions.js";
 
-const fetchAllPokemon = async (pokemon = "?limit=1302") => {
+const fetchAllPokemon = async (pokemon = "?limit=15") => {
   try {
     const response = await fetch(
       `https://pokeapi.co/api/v2/pokemon/${pokemon}`
@@ -23,6 +23,7 @@ const fetchAllPokemon = async (pokemon = "?limit=1302") => {
 
 const fetchDataPokemon = async (pokemonName) => {
   try {
+    console.log('HIIII')
     const response = await fetch(
       `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
     );
@@ -30,6 +31,7 @@ const fetchDataPokemon = async (pokemonName) => {
       throw new Error("Pokemon not found");
     }
     const pokeJson = await response.json();
+    console.log('TESTTTT',  pokeJson)
 
     const id = pokeJson.id;
     const weight = pokeJson.weight;
