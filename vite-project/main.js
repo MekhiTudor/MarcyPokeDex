@@ -1,4 +1,4 @@
-import { renderPokemon, renderCard } from "./render-functions";
+import { renderPokemon, renderCard, renderFirstCard } from "./render-functions";
 import {
   fetchAllPokemon,
   fetchDataPokemon,
@@ -6,8 +6,7 @@ import {
 } from "./Fetch-functions";
 
 const main = async () => {
-  //renderPokemon();
-  //renderCard();
+  renderFirstCard("mewtwo");
   fetchAllPokemon();
   //fetchDataPokemon();
   searchPokemon();
